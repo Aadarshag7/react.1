@@ -21,6 +21,7 @@ const resetCounter=()=>{
     clearInterval(intervalRef.current);
     intervalRef.current=null;
     setCount(0);
+    
 };
 
 return(

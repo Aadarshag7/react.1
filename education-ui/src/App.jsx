@@ -7,6 +7,7 @@ import Footer from './footer';
 import Hero from './Hero';
 import Zero from './Zero';
 import Counter from './Counter';
+import Stopwatch from './Stopwatch';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,8 @@ function App() {
       
       <Footer/>
       <Counter/>
+      <Stopwatch/>
+
     </>
   );
 }
