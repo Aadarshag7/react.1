@@ -10,6 +10,8 @@ import Counter from './Counter';
 import Stopwatch from './Stopwatch';
 import Welcome from './Welcome';
 import Windowsize from './Windowsize';
+import Keypress from './Keypress';
+import Users from './Users';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,6 +32,8 @@ function App() {
       <Stopwatch/>
       <Welcome/>
       <Windowsize/>
+      <Keypress/>
+      <Users/>
 
     </>
   );
