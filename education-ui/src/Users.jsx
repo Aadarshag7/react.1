@@ -23,7 +23,7 @@ useEffect(()=>{
     fetchUser();
 },[]);
    const filterUser=users.filter((user)=>
-         user.name.toLowerCase().includes(search.toLowerCase()));
+         user.name.toLowerCase().includes(search.toLowerCase())); 
 
 if (loading){
     return (<h2>Loading..</h2>);
@@ -33,7 +33,7 @@ return(
     <div>
         <input type="text" value={search} placeholder="Search"
         onChange={(e)=>setSearch(e.target.value)}
-        />
+        /> 
 
         {filterUser.map((user)=>(
             <div key={user.id}>

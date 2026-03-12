@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
-function Stopwatch(){
-    const[count,setCount]=useState(0);
+function Stopwatch({initial=0}){
+  
+    const[count,setCount]=useState(initial);
     const intervalRef=useRef(null);
     const start=()=>{
     if(intervalRef.current)return;
@@ -37,7 +38,9 @@ function Stopwatch(){
   return(
     <div>
         <h1>{formatTime(count)}</h1>
+        <div style={{border:"1px solid black"}}>
         <button onClick={start}>Start</button>
+        </div>
         <button onClick={stop}>Stop</button>
         <button onClick={reset}>Reset</button>        
 

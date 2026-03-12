@@ -12,6 +12,7 @@ import Welcome from './Welcome';
 import Windowsize from './Windowsize';
 import Keypress from './Keypress';
 import Users from './Users';
+import Form from './Form';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,7 +30,16 @@ function App() {
       
       <Footer/>
       <Counter/>
+      <Form/>
+      <div style={{border:"2px solid gray", padding:"10px", marginBottom:"30px"}}>
+        <h1>Stopwatch1</h1>
       <Stopwatch/>
+      </div>
+      <div style={{border:"2px solid blue", marginBottom:"10px"}}>
+        <h1>Stopwatch2</h1>
+      <Stopwatch initial={10}/>
+      </div>
+      <Stopwatch initial={20}/>
       <Welcome/>
       <Windowsize/>
       <Keypress/>
