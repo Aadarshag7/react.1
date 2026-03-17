@@ -7,7 +7,14 @@ export default function Todo(){
     setTodo([...todos,task]);
     setTask("");
     };
+    const deletes=(indexTODelete)=>{
+        const delTods =todos.filter((todo,index)=>index!==indexTODelete);
+        setTodo(delTods);
+    };
+
+    }
     return (
+
         <div>
             <input type="text" value={task} placeholder="Write a task" 
             onChange={(e)=>setTask(e.target.value)}/>
