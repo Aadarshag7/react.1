@@ -7,21 +7,24 @@ export default function Todo(){
     setTodo([...todos,task]);
     setTask("");
     };
-    const deletes=(indexTODelete)=>{
-        const delTods =todos.filter((todo,index)=>index!==indexTODelete);
+    const deletes=(indexToDelete)=>{
+        const delTods =todos.filter((todo,index)=>index!==indexToDelete);
         setTodo(delTods);
     };
-
-    }
     return (
 
         <div>
             <input type="text" value={task} placeholder="Write a task" 
             onChange={(e)=>setTask(e.target.value)}/>
             <button onClick={addButton}> Add</button>
+            {todos.length===0?(
+                <p>NO Item</p>
+            ):(
             <ul>
-                {todos.map((todo,index)=>(<li key={index}>{todo}</li>))}
+                {todos.map((todo,index)=>(<li key={index}>{todo}<button onClick={()=>deletes(index)}>Delete</button> </li>))}
+                
             </ul>
+            )};
         </div>
     );
 }
