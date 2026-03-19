@@ -4,7 +4,7 @@ export default function Todo(){
     const[todos,setTodo]=useState([]);
     const addButton=()=>{
     if(task==="")return;
-    setTodo([...todos,task]);
+    setTodo([...todos,{text:task,completed:false}]);
     setTask("");
     };
     const deletes=(indexToDelete)=>{
@@ -21,7 +21,8 @@ export default function Todo(){
                 <p>NO Item</p>
             ):(
             <ul>
-                {todos.map((todo,index)=>(<li key={index}>{todo}<button onClick={()=>deletes(index)}>Delete</button> </li>))}
+                {todos.map((todo,index)=>(<li key={index}>{todo.text}<button onClick={()=>deletes(index)}>Delete</button> </li>))}
+               
                 
             </ul>
             )};
