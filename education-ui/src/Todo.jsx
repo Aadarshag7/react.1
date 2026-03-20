@@ -11,6 +11,17 @@ export default function Todo(){
         const delTods =todos.filter((todo,index)=>index!==indexToDelete);
         setTodo(delTods);
     };
+
+    const toggle=(indexToToggle)=>{
+        const newToggle=todos.map((todo,index)=>{
+            if(index===indexToToggle){
+                return{...todo,completed:!todo.completed};
+            }
+            return todo;
+        });
+        setTodo(newToggle);
+        
+    };
     return (
 
         <div>
@@ -21,10 +32,14 @@ export default function Todo(){
                 <p>NO Item</p>
             ):(
             <ul>
-                {todos.map((todo,index)=>(<li key={index}>{todo.text}<button onClick={()=>deletes(index)}>Delete</button> </li>))}
+                {todos.map((todo,index)=>(<li key={index}
+                onClick={()=>toggle(index)}
+                 style={{textDecoration:todo.completed?"line-through":"none", cursor:"pointer"}}>{todo.text}
+                <button onClick={()=>deletes(index)}>Delete</button> </li>))}
                
                 
             </ul>
+            
             )};
         </div>
     );
