@@ -35,9 +35,8 @@ export default function Todo(){
                 {todos.map((todo,index)=>(<li key={index}
                 onClick={()=>toggle(index)}
                  style={{textDecoration:todo.completed?"line-through":"none", cursor:"pointer"}}>{todo.text}
-                <button onClick={()=>deletes(index)}>Delete</button> </li>))}
-               
-                
+                <button onClick={(e)=>{e.stopPropagation();
+                    deletes(index)}}>Delete</button> </li>))}               
             </ul>
             
             )};
