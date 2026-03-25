@@ -8,7 +8,10 @@ return(
     }}
 >    
     {todo.text}
-    <button onClick={()=>delete(index)}>Delete</button>
+    <button onClick={(e)=>{e.stopPropagation();
+        
+        
+        delete(index)}}>Delete</button>
     </li>
 );
 }

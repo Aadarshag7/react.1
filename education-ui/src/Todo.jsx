@@ -1,8 +1,10 @@
 import { useState } from "react";
+import TodoItem from "./TodoItem";
 export default function Todo(){
     const[task,setTask]=useState("");
     const[todos,setTodo]=useState([]);
     const addButton=()=>{
+        
     if(task==="")return;
     setTodo([...todos,{text:task,completed:false}]);
     setTask("");
@@ -32,11 +34,18 @@ export default function Todo(){
                 <p>NO Item</p>
             ):(
             <ul>
-                {todos.map((todo,index)=>(<li key={index}
-                onClick={()=>toggle(index)}
-                 style={{textDecoration:todo.completed?"line-through":"none", cursor:"pointer"}}>{todo.text}
-                <button onClick={(e)=>{e.stopPropagation();
-                    deletes(index)}}>Delete</button> </li>))}               
+                {todos.map((todo,index)=>(
+                    <TodoItem
+                    key={index}
+                    todo={todo}
+                    deletes={deletes}
+                    toggle={toggle}
+                    index={index}
+
+                    />
+
+                ))};
+
             </ul>
             
             )};
