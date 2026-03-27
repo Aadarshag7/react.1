@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TodoItem from "./TodoItem";
+import TodoList from "./TodoList";
 export default function Todo(){
     const[task,setTask]=useState("");
     const[todos,setTodo]=useState([]);
@@ -33,22 +34,11 @@ export default function Todo(){
             {todos.length===0?(
                 <p>NO Item</p>
             ):(
-            <ul>
-                {todos.map((todo,index)=>(
-                    <TodoItem
-                    key={index}
-                    todo={todo}
-                    deletes={deletes}
-                    toggle={toggle}
-                    index={index}
-
-                    />
-
-                ))};
-
-            </ul>
-            
-            )};
+           <TodoList
+           todos={todos}
+           deletes={deletes}
+           toggle={toggle}
+           />)}
         </div>
     );
 }
