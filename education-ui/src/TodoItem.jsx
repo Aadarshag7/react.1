@@ -1,4 +1,5 @@
 export default function TodoItem({todo,index,deletes,toggle}){
+    // if (!todo) return null;
 return(
     <li
      onClick={()=>toggle(index)}
@@ -9,7 +10,8 @@ return(
 >    
     {todo.text}
     <button onClick={(e)=>{e.stopPropagation();
-        delete(index)}}>Delete</button>
+        deletes(index);
+        }}>Delete</button>
     </li>
 );
 }

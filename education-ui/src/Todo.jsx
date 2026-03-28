@@ -6,7 +6,7 @@ export default function Todo(){
     const[todos,setTodo]=useState([]);
     const addButton=()=>{
         
-    if(task==="")return;
+    if(task.trim==="")return;
     setTodo([...todos,{text:task,completed:false}]);
     setTask("");
     };
@@ -27,9 +27,13 @@ export default function Todo(){
     };
     return (
 
-        <div>
+        <div style={{maxWidth:"1000px", margin:"20px", paddingRight:"150px"}}>
             <input type="text" value={task} placeholder="Write a task" 
-            onChange={(e)=>setTask(e.target.value)}/>
+            onChange={(e)=>setTask(e.target.value)}
+            onKeyDown={(e)=>{
+            if(e.key==="Enter") addButton(); 
+            }}
+            />
             <button onClick={addButton}> Add</button>
             {todos.length===0?(
                 <p>NO Item</p>

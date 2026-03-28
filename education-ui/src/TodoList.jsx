@@ -1,4 +1,6 @@
+import TodoItem from "./TodoItem";
 export default function TodoList({todos,deletes,toggle}){
+    // console.log(todos);
     return(
 <ul>
     {todos.map((todo,index)=>(
