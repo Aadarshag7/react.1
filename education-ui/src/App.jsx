@@ -14,6 +14,7 @@ import Keypress from './Keypress';
 import Users from './Users';
 import Form from './Form';
 import Todo from './Todo';
+import Note from './Note';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,6 +33,7 @@ function App() {
       <Footer/>
       <Counter/>
       <Todo/>
+      <Note/>
       <Form/>
       <div style={{border:"2px solid gray", padding:"10px", marginBottom:"30px"}}>
         <h1>Stopwatch1</h1>
