@@ -6,28 +6,28 @@ const[notes,setNote]=useState([]);
 const add=()=>{
     if(title.trim()===""||content.trim()==="")return; 
     const newNote={
-        title:title,
-        content:content
-    }
-    setNote([...note,newNote]);
+        title:title.trim(),
+        content:content.trim()
+    };
+    setNote([...notes,newNote]);
     setTitle("");
-    setNote("");
+    setContent("");
 }
 
 
 return(
 <div style={{margin:"50px"}}>
-    <input type="text" value="{title}" placeholder="Title"
+    <input type="text" value={title} placeholder="Title"
     onChange={(e)=>setTitle(e.target.value)}
 onKeyDown={(e)=>{
     if (e.key==="Enter")
         add();
     }}    
 />
-<input type="text" value="content" placeholder="content"
+<input type="text" value={content} placeholder="content"
 onChange={(e)=>setContent(e.target.value)}
 onKeyDown={(e)=>{
-    if(e.key="Enter")
+    if(e.key==="Enter")
         add();
 }}
 />
@@ -35,7 +35,12 @@ onKeyDown={(e)=>{
 {notes.length===0?(
 <p>No Content & Title</p>
 ):(
-    <ul></ul>
+    <ul>
+        {notes.map((note,index)=>( 
+            <li key={index}><strong>{note.title}</strong>:{note.content}</li>
+
+       ))}
+    </ul>
 )}
 
 </div>
