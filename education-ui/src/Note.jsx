@@ -13,6 +13,11 @@ const add=()=>{
     setTitle("");
     setContent("");
 }
+const del=(indexToDelete)=>{
+    const dels=notes.filter((note,index)=>index!==indexToDelete);
+    setNote(dels);
+}
+
 
 
 return(
@@ -37,7 +42,9 @@ onKeyDown={(e)=>{
 ):(
     <ul>
         {notes.map((note,index)=>( 
-            <li key={index}><strong>{note.title}</strong>:{note.content}</li>
+            <li key={index}><strong>{note.title}</strong>:{note.content}
+            <button onClick={()=>del(index)}>Delete</button>
+            </li>
 
        ))}
     </ul>
