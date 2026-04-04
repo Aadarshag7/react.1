@@ -7,6 +7,7 @@ const[search,SetSearch]=useState("");
 const add=()=>{
     if(title.trim()===""||content.trim()==="")return; 
     const newNote={
+        id:Date.now(),
         title:title.trim(),
         content:content.trim()
     };
@@ -14,8 +15,9 @@ const add=()=>{
     setTitle("");
     setContent("");
 }
-const del=(indexToDelete)=>{
-    const dels=notes.filter((note,index)=>index!==indexToDelete);
+const del=(idToDelete)=>{
+    const dels=notes.filter(note=>note.
+        id!==idToDelete);
     setNote(dels);
 }
 
@@ -49,22 +51,15 @@ onKeyDown={(e)=>{
 />
 
 <button onClick={add}>ADD</button>
-{filternote.length===0?(
-<p>NO Found</p>):(
-    <ul>
-        {filternote.map((note,index)=>(
-            <li key={index}>{note}</li>
-        ))}
-    </ul>
-)}
 
-{notes.length===0?(
-<p>No Content & Title</p>
+
+{filternote.length===0?(
+<p>No Title and COntent</p>
 ):(
     <ul>
-        {notes.map((note,index)=>( 
-            <li key={index}><strong>{note.title}</strong>:{note.content}
-            <button onClick={()=>del(index)}>Delete</button>
+        {filternote.map(note=>( 
+            <li key={note.id}><strong>{note.title}</strong>:{note.content}
+            <button onClick={()=>del(note.id)}>Delete</button>   
             </li>
 
        ))}
