@@ -15,6 +15,7 @@ import Users from './Users';
 import Form from './Form';
 import Todo from './Todo';
 import Note from './Note';
+import Weather from './Weather';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,9 +32,11 @@ function App() {
       <Hero name="Aadarsh" age={24} />
       
       <Footer/>
+      
       <Counter/>
       <Todo/>
       <Note/>
+      <Weather/>
       <Form/>
       <div style={{border:"2px solid gray", padding:"10px", marginBottom:"30px"}}>
         <h1>Stopwatch1</h1>
