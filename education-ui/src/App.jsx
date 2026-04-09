@@ -1,60 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './navbar';
-import Footer from './footer';
-import Hero from './Hero';
-import Zero from './Zero';
-import Counter from './Counter';
-import Stopwatch from './Stopwatch';
-import Welcome from './Welcome';
-import Windowsize from './Windowsize';
-import Keypress from './Keypress';
-import Users from './Users';
-import Form from './Form';
-import Todo from './Todo';
-import Note from './Note';
-import Weather from './Weather';
+import {BrowserRouter,Routes,Route,NavLink}from "react-router-dom";
+import Note from "./Note";
+import Weather from "./Weather";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <Navbar/>
-      
-      <h1>Hello React</h1>
-      <button onClick={()=>setCount(count+1)}>
-        Count is {count}
-      </button>
-      <Zero/>
-      <Hero name="Aadarsh" age={24} />
-      
-      <Footer/>
-      
-      <Counter/>
-      <Todo/>
-      <Note/>
-      <Weather/>
-      <Form/>
-      <div style={{border:"2px solid gray", padding:"10px", marginBottom:"30px"}}>
-        <h1>Stopwatch1</h1>
-      <Stopwatch/>
-      </div>
-      <div style={{border:"2px solid blue", marginBottom:"10px"}}>
-        <h1>Stopwatch2</h1>
-      <Stopwatch initial={10}/>
-      </div>
-      <Stopwatch initial={20}/>
-      <Welcome/>
-      <Windowsize/>
-      <Keypress/>
-      <Users/>
-
-    </>
-  );
+function Home(){
+  return <h1>Welcome Home </h1>;
 }
 
+export default function App(){
+return (
+  <BrowserRouter>
+  <nav>
 
-export default App;
+    <NavLink to ="/">Home</NavLink>|{" "}
+    <NavLink to="/note" style={({isActive})=>({color:isActive?"red":"blue",margin:"20px"})
+  }>Notes</NavLink>|{" "}
+    <NavLink to="/weather">Weather</NavLink>
+  </nav>
+  <Routes>
+    <Route path="/" element={<Home/>}/>
+    <Route path="/note" element={<Note/>}/>
+    <Route path="/weather" element={<Weather/>}/>
+  </Routes>
+
+  </BrowserRouter>
+);
+}
