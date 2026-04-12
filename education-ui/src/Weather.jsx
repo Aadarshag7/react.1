@@ -1,7 +1,7 @@
 import { useState } from "react"
-export default function Weather(){
+export default function Weather({weather,setWeather}){
     const[city,setCity]=useState("");
-    const[weather,setWeather]=useState(null);
+    // const[weather,setWeather]=useState(null);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState("");
     const getWeather=async()=>{
@@ -35,8 +35,12 @@ export default function Weather(){
             <input type="text" value={city} placeholder="City Name"
             onChange={(e)=>setCity(e.target.value)}
             onKeyDown={(e)=>{
-                if(e.key==="Enter")
+                if(e.key==="Enter"){
                     getWeather();
+                
+                    
+                    
+            };
             }}/>
             <button onClick={getWeather}>Get Weather</button>
             {weather && weather.main&&(

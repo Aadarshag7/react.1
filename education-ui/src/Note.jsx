@@ -1,8 +1,8 @@
 import { useState } from "react";
-export default function Note(){
+export default function Note({notes,setNote}){
 const[title,setTitle]=useState("");
 const[content,setContent]=useState("");
-const[notes,setNote]=useState([]);
+// const[notes,setNote]=useState([]);
 const[search,SetSearch]=useState("");
 const add=()=>{
     if(title.trim()===""||content.trim()==="")return; 
