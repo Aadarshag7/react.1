@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+
 export default function Note({notes,setNote}){
 const[title,setTitle]=useState("");
 const[content,setContent]=useState("");
-// const[notes,setNote]=useState([]);
+const[notes,setNote]=useState([]);
 const[search,SetSearch]=useState("");
+
+useEffect(()=>{
+    fetch("http://localhost:5005")
+    .then(res=>res.json())
+    .then(data=>setNote(data))
+    .catch(err=>console.log(err));
+},[]);
 const add=()=>{
     if(title.trim()===""||content.trim()==="")return; 
     const newNote={
