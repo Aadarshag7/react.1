@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 export default function Note({notes,setNote}){
 const[title,setTitle]=useState("");
 const[content,setContent]=useState("");
-const[notes,setNote]=useState([]);
+// const[notes,setNote]=useState([]);
 const[search,SetSearch]=useState("");
 
 useEffect(()=>{
@@ -12,18 +12,33 @@ useEffect(()=>{
     .then(data=>setNote(data))
     .catch(err=>console.log(err));
 },[]);
-const add=()=>{
+const add=async()=>{
     if(title.trim()===""||content.trim()==="")return; 
     const newNote={
         id:Date.now(),
         title:title.trim(),
         content:content.trim()
     };
+    await fetch("http://localhost:5002/notes/post",{
+    method:"POST",
+    headers:{
+        "Content-type":"application/json"
+    },
+    body:JSON.stringify(newNote)
+});
+    
     setNote([...notes,newNote]);
     setTitle("");
     setContent("");
 }
-const del=(idToDelete)=>{
+const del=async(idToDelete)=>{
+    await fetch(`http://localhost:5002/delete/{idToDelete}`,{
+        method:"DELETE",
+
+        
+    })
+
+
     const dels=notes.filter(note=>note.
         id!==idToDelete);
     setNote(dels);
