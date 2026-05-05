@@ -1,10 +1,11 @@
 const express=require("express");
 const connectDB=require("./db");
 const Note=require("./models/note");
+const auth=require("./middleware/auth");
 const app=express();
 connectDB();
 app.use(express.json());
-app.get("/",async(req,res)=>{
+app.get("/",auth,async(req,res)=>{
     try{
         
   const notes=await Note.find();

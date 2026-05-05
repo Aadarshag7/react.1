@@ -10,6 +10,13 @@ const auth=(req,res,next)=>{
     const decoded=jwt.verify(tokens,"aadarshag");
     req.user=decoded;
     next();
+    } catch(error){
+        console.log("Error:",error);
+        res.status(500).json({
+            message:"server error"
+        });
     }
 
 }
+
+module.exports=auth;
