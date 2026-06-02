@@ -3,9 +3,14 @@ const express= require("express");
 const connectDB= require("./db");
 const User=require("./models/user");
 const app=express();
+const cors=require("cors");
 const bcrypt=require("bcryptjs");
 app.use(express.json());
 connectDB();
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true,
+}));
 app.post("/register",async(req,res)=>{
     try{
     const{name,email,password}=req.body;

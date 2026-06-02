@@ -2,9 +2,17 @@ const express=require("express");
 const app= express();
 const jwt=require("jsonwebtoken");
 const User = require("./models/user");
+const cors=require("cors");
+const bcrypt=require("bcryptjs");
+const cookieParser=require("cookie-parser");
 const connectDB=require("./db");
 connectDB();
+app.use(cookieParser());
 app.use(express.json());
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}));
 app.post("/login",async(req,res)=>{
     try{
     const{email,password}=req.body;
@@ -33,8 +41,8 @@ app.post("/login",async(req,res)=>{
     message:"login successfully",
     data:{
         id:user._id,
-        name:user._name,
-        email:user._email
+        name:user.name,
+        email:user.email
     }
  });
 
@@ -46,4 +54,8 @@ app.post("/login",async(req,res)=>{
         });
         
     }
+});
+
+app.listen(5122,()=>{
+    console.log("welcome");
 });

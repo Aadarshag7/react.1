@@ -3,8 +3,15 @@ const connectDB=require("./db");
 const Note=require("./models/note");
 const auth=require("./middleware/auth");
 const app=express();
+const cors=require("cors");
+const cookieParser=require("cookie-parser");
 connectDB();
 app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true
+}));
 app.get("/",auth,async(req,res)=>{
     try{
         
