@@ -29,7 +29,7 @@ app.post("/login",async(req,res)=>{
     });
  }
   
- const token= jwt.sign({id:user._id},"aadarshag", 
+ const token= jwt.sign({id:user._id,role:user.role,},"aadarshag", 
     {expiresIn:"1d"}
  );
 

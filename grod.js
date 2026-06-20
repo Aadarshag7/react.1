@@ -6,7 +6,7 @@ const connectDB=require("./db");
 const Product=require("./models/product");
 connectDB();
 app.use(cors({
-    origin:"http://localhost:5123",
+    origin:"http://localhost:5173",
     credentials:true
 }));
 app.get("/",async(req,res)=>{
