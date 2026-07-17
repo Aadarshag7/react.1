@@ -6,6 +6,7 @@ const auth=(req,res,next)=>{
         return res.status(401).json({
             message:"Not authorized"
         });
+        
     }
     const decoded=jwt.verify(tokens,"aadarshag");
     req.user=decoded;
