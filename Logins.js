@@ -2,6 +2,8 @@ const express=require("express");
 const db=require("./datas");
 const cors=require("cors");
 const bcrypt=require("bcryptjs");
+const jwt=require("jsonwebtoken");
+const cookieParser=require("cookie-parser");
 const app=express();
 app.use(express.json());
 app.use(cors({
@@ -35,6 +37,12 @@ if(!email||!password){
         message:"Invalid Credentials"
     });
  }
+
+ const token=jwt.sign({id:usersss._id},"aadarsh.ag",{
+    expiresIn:"1d"
+ });
+
+ 
 
  return res.status(200).json({
     message:"Login Success"
